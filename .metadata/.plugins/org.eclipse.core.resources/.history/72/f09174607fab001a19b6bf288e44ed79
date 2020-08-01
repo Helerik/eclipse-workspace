@@ -1,0 +1,26 @@
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class createfile {
+
+	private Formatter x;
+	private String filename;
+	
+	public void openFile() {
+		try {
+			x = new Formatter(filename);
+		}
+		catch(Exception some_error) {
+			System.out.println("An error occurred.");
+		}
+	}
+	
+	public void addRecords() {
+		x.format("%s%s%s", "20 ", "erik ", "vincent");
+	}
+	
+	public void closeFile() {
+		x.close();
+	}
+}

@@ -1,0 +1,19 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Layout extends JFrame{
+	
+	private JButton lbutton;
+	private JButton cbutton;
+	private JButton rbutton;
+	private FlowLayout layout;
+	private Container container;
+	
+	public layout() {
+		super("title");
+		layout = new FlowLayout();
+		
+	}
+
+}

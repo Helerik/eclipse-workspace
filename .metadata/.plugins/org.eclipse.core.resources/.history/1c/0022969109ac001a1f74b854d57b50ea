@@ -1,0 +1,11 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class graphic_plot extends JPanel{
+	
+	public void paintComponent(Graphics g) {
+		
+	}
+
+}

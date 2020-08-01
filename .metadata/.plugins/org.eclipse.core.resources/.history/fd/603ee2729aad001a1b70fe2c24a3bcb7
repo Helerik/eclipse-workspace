@@ -1,0 +1,272 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.script.*;
+
+public class GUI extends JFrame{
+	
+	private FlowLayout layout;
+	
+	private JTextField display;
+	
+	private JButton nine;
+	private JButton eight;
+	private JButton seven;
+	private JButton six;
+	private JButton five;
+	private JButton four;
+	private JButton three;
+	private JButton two;
+	private JButton one;
+	private JButton zero;
+	
+	private JButton lparenthesis;
+	private JButton rparenthesis;
+	private JButton dot;
+	
+	private JButton clear;
+	private JButton backspace;
+	
+	private JButton plus;
+	private JButton minus;
+	private JButton mult;
+	private JButton div;
+	private JButton equal;
+	
+	public GUI(){
+		super("Calculator");
+		
+		layout = new FlowLayout();
+		layout.setAlignment(FlowLayout.CENTER);
+		setLayout(layout);
+		
+		display = new JTextField(30);
+		display.setEditable(false);
+		add(display);
+		
+		nine = new JButton("9");
+		add(nine);
+		nine.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "9");
+				}
+			}
+		);
+		
+		eight = new JButton("8");
+		add(eight);
+		eight.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "8");
+				}
+			}
+		);
+		
+		seven = new JButton("7");
+		add(seven);
+		seven.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "7");
+				}
+			}
+		);
+		
+		six = new JButton("6");
+		add(six);
+		six.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "6");
+				}
+			}
+		);
+		
+		five = new JButton("5");
+		add(five);
+		five.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "5");
+				}
+			}
+		);
+		
+		four = new JButton("4");
+		add(four);
+		four.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "4");
+				}
+			}
+		);
+		
+		three = new JButton("3");
+		add(three);
+		three.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "3");
+				}
+			}
+		);
+		
+		two = new JButton("2");
+		add(two);
+		two.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "2");
+				}
+			}
+		);
+		
+		one = new JButton("1");
+		add(one);
+		one.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "1");
+				}
+			}
+		);
+		
+		zero = new JButton("0");
+		add(zero);
+		zero.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "0");
+				}
+			}
+		);
+		
+		lparenthesis = new JButton("(");
+		add(lparenthesis);
+		lparenthesis.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "(");
+				}
+			}
+		);
+		
+		rparenthesis = new JButton(")");
+		add(rparenthesis);
+		rparenthesis.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + ")");
+				}
+			}
+		);
+		
+		dot = new JButton(".");
+		add(dot);
+		dot.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + ".");
+				}
+			}
+		);
+		
+		clear = new JButton("C");
+		add(clear);
+		clear.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText("");
+				}
+			}
+		);
+		
+		backspace = new JButton("<--");
+		add(backspace);
+		backspace.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText().substring(0,display.getText().length()-1));
+				}
+			}
+		);
+		
+		plus = new JButton("+");
+		add(plus);
+		plus.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "+");
+				}
+			}
+		);
+		
+		minus = new JButton("-");
+		add(minus);
+		minus.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "-");
+				}
+			}
+		);
+		
+		mult = new JButton("*");
+		add(mult);
+		mult.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "*");
+				}
+			}
+		);
+		
+		div = new JButton("/");
+		add(div);
+		div.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					display.setText(display.getText() + "/");
+				}
+			}
+		);
+		
+		equal = new JButton("=");
+		add(equal);
+		equal.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					String text = display.getText();
+					try {
+						text = performOperation(text);
+					}
+					catch(ScriptException e) {
+				    	text = "ERROR";
+					}
+					display.setText(text);
+				}
+			}
+		);
+
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setSize(360,400);
+		setVisible(true);
+	}
+	
+	public String performOperation(String text) throws ScriptException {	
+		@SuppressWarnings("serial")
+		ScriptEngineManager mgr = new ScriptEngineManager();
+	    ScriptEngine engine = mgr.getEngineByName("JavaScript");
+	    return String.valueOf(engine.eval(text));	
+	}
+	
+
+}
+
+
+
+
+

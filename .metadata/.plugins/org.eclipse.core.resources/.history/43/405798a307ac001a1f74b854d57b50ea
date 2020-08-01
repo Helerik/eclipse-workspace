@@ -1,0 +1,28 @@
+import java.util.*;
+import javax.swing.*;
+
+public class class25 {
+
+	/* public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter first num: ");
+		int n1 = input.nextInt();
+		System.out.println("Enter second num: ");
+		int n2 = input.nextInt();
+		
+		try {
+			System.out.println(n1/n2);
+		}
+		catch(Exception some_error) {
+			System.out.println("An error occurred.");
+			System.out.println(some_error);
+		}
+		
+	}*/
+	
+	Layout lay = new Layout();
+	lay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+
+}

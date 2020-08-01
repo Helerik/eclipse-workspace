@@ -1,0 +1,16 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class colorChooser extends JFrame{
+
+	private JButton b;
+	private Color color = Color.WHITE;
+	private JPanel panel;
+	
+	public colorChooser() {
+		super("the title");
+		panel = new JPanel();
+		panel.setBackground(color);
+	}
+}

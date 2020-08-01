@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class readfile {
+	
+	private Scanner scanner;
+	private String filename;
+	
+	public readfile(String fname) {
+		filename = fname;
+	}
+	
+	public void openFile() {
+		try {
+			scanner = new Scanner(filename);
+		}
+		catch(Exception some_error) {
+			System.out.println("An error occurred.");
+		}
+	}
+	
+	public void readFile() {
+		while (scanner.hasNext()) {
+			System.out.printf("%s\n"\, scanner.next())
+		}
+	}
+	
+}

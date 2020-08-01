@@ -1,0 +1,17 @@
+import javax.swing.JFrame;
+
+public class class24 {
+
+	public static void main(String[] args) {
+	/*  GUI gui = new GUI();
+		gui.setSize(300, 200);
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setVisible(true);
+	*/
+	
+	
+		
+		
+	}
+
+}

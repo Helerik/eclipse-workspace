@@ -1,0 +1,50 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+// import javax.swing.event.*;
+
+public class GUI6 extends JFrame{
+	private JPanel mousepanel;
+	private JLabel statusbar;
+	
+	public GUI6() {
+		super("title");
+		
+		mousepanel = new JPanel();
+		mousepanel.setBackground(Color.WHITE);
+		HandlerClass handler = new HandlerClass();
+		mousepanel.addMouseListener(handler);
+		mousepanel.addMouseMotionListener(handler);
+		
+		add(mousepanel, BorderLayout.CENTER);
+		
+		statusbar = new JLabel("default");
+		add(statusbar, BorderLayout.SOUTH);
+		
+	}
+	private class HandlerClass implements MouseListener, MouseMotionListener{
+		public void mouseClicked(MouseEvent event) {
+			statusbar.setText(String.format("Clicked at %d,%d", event.getX(), event.getY()));
+		}
+		public void mousePressed(MouseEvent event) {
+			statusbar.setText("Mouse pressed down");
+		}
+		public void mouseReleased(MouseEvent event) {
+			statusbar.setText("Mouse released");
+		}
+		public void mouseEntered(MouseEvent event) {
+			statusbar.setText("Area enterd");
+			mousepanel.setBackground(Color.BLUE);
+		}
+		public void mouseExited(MouseEvent event) {
+			mousepanel.setBackground(Color.WHITE);
+			statusbar.setText("Area exited");
+		}
+		public void mouseMoved(MouseEvent event) {
+			statusbar.setText("Mouse being moved");
+		}
+		public void mouseDragged(MouseEvent event) {
+			statusbar.setText("Mouse being dragged");
+		}
+	}
+}

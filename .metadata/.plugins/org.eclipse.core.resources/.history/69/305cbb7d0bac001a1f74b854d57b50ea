@@ -1,0 +1,30 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class colorChooser extends JFrame{
+
+	private JButton b;
+	private Color color = Color.WHITE;
+	private JPanel panel;
+	
+	public colorChooser() {
+		super("the title");
+		panel = new JPanel();
+		panel.setBackground(color);
+		
+		b = new JButton("Choose a color.");
+		b.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					Color prev_col = color;
+					color = JColorChooser.showDialog(null, "Pick your color:", color);
+					if (color == null) {
+						color = prev_col;
+					}
+					
+				}
+			}
+		);
+	}
+}

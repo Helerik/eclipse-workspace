@@ -1,0 +1,46 @@
+import javax.swing.JFrame;
+import java.io.File;
+import java.util.*;
+
+public class class24 {
+
+	public static void main(String[] args) {
+	/*  GUI gui = new GUI();
+		gui.setSize(300, 200);
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setVisible(true);
+	*/
+		
+		File x = new File("C:\\Users\\Cliente\\Desktop\\netBeans\\test.txt");
+		
+		if (x.exists()) {
+			System.out.println(x.getName() + " exists.");
+		}
+		else {
+			System.out.println("Nothing found");
+		}
+		
+		final Formatter y;
+		try {
+			y = new Formatter("some_file.txt"); // can use full path
+			System.out.println("File created succesfully.");
+		}
+		catch(Exception e) {
+			System.out.println("Error.");
+		}
+		
+		createfile g = new createfile("new_file_name.txt");
+		g.openFile();
+		g.addRecords();
+		g.closeFile();
+		
+		readfile r = new readfile("new_file_name.txt");
+		r.openFile();
+		r.readFile();
+		r.closeFile();
+		
+		
+		
+	}
+
+}
